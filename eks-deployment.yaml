@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trend-tasks-app
+  labels:
+    app: trend-tasks-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: trend-tasks-app
+  template:
+    metadata:
+      labels:
+        app: trend-tasks-app
+    spec:
+      containers:
+        - name: webserver
+          image: aarushisuba/webserver:latest
+          ports:
+            - containerPort: 3000
