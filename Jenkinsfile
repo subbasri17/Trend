@@ -50,8 +50,8 @@ pipeline {
                     aws eks --region $AWS_REGION update-kubeconfig --name $EKS_CLUSTER
 
                    
-                    kubectl get nodes
-                    kubectl apply -f eks-deployment.yaml
+                    
+                    kubectl --kubeconfig=/var/lib/jenkins/.kube/config apply -f eks-deployment.yaml
                     """
                    }
                 }
