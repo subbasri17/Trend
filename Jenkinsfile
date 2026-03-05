@@ -10,21 +10,11 @@ pipeline {
 
     stages {
 
-        stage("Clean Up"){
-            steps {
-                deleteDir()
-            }
-        }
-
-        stage("Clone Repo"){
-            steps {
-                sh "git clone "https://github.com/subbasri17/Trend.git"
-            }
-        }
+        
 
         stage("Build"){
             steps {
-                dir("Trend") {
+                script {
                     sh "docker build -t webserver ."
                 }
             }
@@ -58,8 +48,7 @@ pipeline {
                     sh """
                     aws eks --region $AWS_REGION update-kubeconfig --name $EKS_CLUSTER
 
-                    kubectl set image deployment/trend-tasks-app \
-                    webserver=$DOCKERHUB_REPO:$IMAGE_TAG --record || \
+                   
 
                     kubectl apply -f eks-deployment.yaml
                     """
