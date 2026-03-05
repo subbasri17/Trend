@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: webserver
-          image: aarushisuba/webserver:latest
+          image: aarushisuba/webserver:22
           ports:
-            - containerPort: 3000
+            - containerPort: 80
