@@ -52,6 +52,7 @@ pipeline {
 
 
                     kubectl --kubeconfig=/var/lib/jenkins/.kube/config apply -f eks-deployment.yaml
+                    kubectl --kubeconfig=/var/lib/jenkins/.kube/config apply -f service.yaml
                     """
                    }
                 }
